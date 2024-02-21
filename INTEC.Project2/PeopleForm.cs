@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace INTEC.Project2
 {
-    public partial class Form1 : Form
+    public partial class PeopleForm : Form
     {
         private const string filePath = "db.json";
         private List<PersonEntity> persons;
 
-        public Form1()
+        public PeopleForm()
         {
             InitializeComponent();
 
@@ -173,6 +173,31 @@ namespace INTEC.Project2
         private void btnRemove_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Search()
+        {
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                persons = JsonConvert.DeserializeObject<List<PersonEntity>>(json);
+
+
+                var p = persons.Where(x => x.Cedula.ToLower().Contains(txtSearch.Text.ToLower()) || x.FirstName.ToLower().Contains(txtSearch.Text.ToLower()) || x.LastName.ToLower().Contains(txtSearch.Text.ToLower()));
+
+                dgvResults.DataSource = p.ToList();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            defaultView();
+            loadData();
         }
     }
 }
