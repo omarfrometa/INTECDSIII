@@ -19,8 +19,16 @@ namespace INTEC.Project2
             System.Security.Principal.WindowsIdentity wi = System.Security.Principal.WindowsIdentity.GetCurrent();
             lblMessage.Text = $"Autenticado como {wi.Name.ToString()}";
 
-            //var form = new LoginForm() { MdiParent = this};
-            //form.Show();
+            var form = new LoginForm(this) { MdiParent = this};
+            form.Show();
+        }
+
+        public void EnabledControlMainForm()
+        {
+            MainMenuStrip.Enabled = true; 
+            toolStrip.Enabled = true;
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,6 +86,42 @@ namespace INTEC.Project2
             if (form != null)
             {
                 form.Close();
+            }
+        }
+
+        private void newToolStripButton_Click(object sender, EventArgs e)
+        {
+            Form form = (Form)this.ActiveMdiChild;
+            if (form != null)
+            {
+                ((MyInterface)form).New();
+            }
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            Form form = (Form)this.ActiveMdiChild;
+            if (form != null)
+            {
+                ((MyInterface)form).Save();
+            }
+        }
+
+        private void cancelToolStripButton_Click(object sender, EventArgs e)
+        {
+            Form form = (Form)this.ActiveMdiChild;
+            if (form != null)
+            {
+                ((MyInterface)form).Cancel();
+            }
+        }
+
+        private void removeToolStripButton_Click(object sender, EventArgs e)
+        {
+            Form form = (Form)this.ActiveMdiChild;
+            if (form != null)
+            {
+                ((MyInterface)form).Delete();
             }
         }
     }

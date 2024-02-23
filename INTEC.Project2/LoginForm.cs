@@ -18,9 +18,13 @@ namespace INTEC.Project2
         private const string filePath = "users.json";
         private List<UserEntity> users;
 
-        public LoginForm()
+        private MainForm mainFormIntance;
+
+        public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
+
+            this.mainFormIntance = mainForm;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -55,7 +59,9 @@ namespace INTEC.Project2
                     return;
                 }
 
-                MessageBox.Show("Credenciales Validas.", "CONTROL DE USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Credenciales Validas.", "CONTROL DE USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                mainFormIntance.EnabledControlMainForm();
 
                 this.Hide();
             }

@@ -51,7 +51,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtNationality = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.rblFemale = new System.Windows.Forms.RadioButton();
             this.rblMale = new System.Windows.Forms.RadioButton();
@@ -73,6 +72,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cbNationality = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.gbForm.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -144,6 +144,7 @@
             // 
             // gbForm
             // 
+            this.gbForm.Controls.Add(this.cbNationality);
             this.gbForm.Controls.Add(this.label17);
             this.gbForm.Controls.Add(this.label16);
             this.gbForm.Controls.Add(this.label15);
@@ -160,7 +161,6 @@
             this.gbForm.Controls.Add(this.label10);
             this.gbForm.Controls.Add(this.txtAddress);
             this.gbForm.Controls.Add(this.label9);
-            this.gbForm.Controls.Add(this.txtNationality);
             this.gbForm.Controls.Add(this.label8);
             this.gbForm.Controls.Add(this.rblFemale);
             this.gbForm.Controls.Add(this.rblMale);
@@ -322,13 +322,6 @@
             this.label9.Size = new System.Drawing.Size(55, 13);
             this.label9.TabIndex = 49;
             this.label9.Text = "Direccion:";
-            // 
-            // txtNationality
-            // 
-            this.txtNationality.Location = new System.Drawing.Point(484, 19);
-            this.txtNationality.Name = "txtNationality";
-            this.txtNationality.Size = new System.Drawing.Size(113, 20);
-            this.txtNationality.TabIndex = 48;
             // 
             // label8
             // 
@@ -527,6 +520,14 @@
             this.lblStatus.Size = new System.Drawing.Size(118, 17);
             this.lblStatus.Text = "toolStripStatusLabel1";
             // 
+            // cbNationality
+            // 
+            this.cbNationality.FormattingEnabled = true;
+            this.cbNationality.Location = new System.Drawing.Point(484, 18);
+            this.cbNationality.Name = "cbNationality";
+            this.cbNationality.Size = new System.Drawing.Size(247, 21);
+            this.cbNationality.TabIndex = 69;
+            // 
             // PeopleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,7 +579,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtNationality;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RadioButton rblFemale;
         private System.Windows.Forms.RadioButton rblMale;
@@ -596,6 +596,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbNationality;
     }
 }
 

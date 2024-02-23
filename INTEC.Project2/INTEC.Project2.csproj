@@ -50,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\BirthPlaceEntity.cs" />
+    <Compile Include="Entities\NationalityEntity.cs" />
     <Compile Include="Entities\PersonEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
+    <Compile Include="MyInterface.cs" />
     <Compile Include="PeopleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\gestioinciudadano.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

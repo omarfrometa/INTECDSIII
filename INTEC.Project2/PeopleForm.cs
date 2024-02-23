@@ -13,10 +13,12 @@ using System.Windows.Forms;
 
 namespace INTEC.Project2
 {
-    public partial class PeopleForm : Form
+    public partial class PeopleForm : Form, MyInterface
     {
         private const string filePath = "db.json";
+        private const string nationalityPath = "nationalities.json";
         private List<PersonEntity> persons;
+        private List<NationalityEntity> nationalities;
 
         public PeopleForm()
         {
@@ -24,6 +26,24 @@ namespace INTEC.Project2
 
             defaultView();
             loadData();
+            getNationalities();
+        }
+
+        private void getNationalities()
+        {
+            if (File.Exists(nationalityPath))
+            {
+                string json = File.ReadAllText(nationalityPath);
+                nationalities = JsonConvert.DeserializeObject<List<NationalityEntity>>(json);
+            }
+            else
+            {
+                nationalities = new List<NationalityEntity>();
+            }
+
+            cbNationality.SelectedValue = "Id";
+            cbNationality.DisplayMember = "Name";
+            cbNationality.DataSource = nationalities;
         }
 
         private void loadData()
@@ -52,7 +72,7 @@ namespace INTEC.Project2
             person.DOB = dtpDOB.Value;
             person.BirthPlace = txtBirthPlace.Text;
             person.Gender = rblMale.Checked ? "M" : "F";
-            person.NationalityId = txtNationality.Text;
+            person.NationalityId = cbNationality.SelectedValue.ToString();
             person.AddressLine1 = txtAddress.Text;
             person.BloodTypeId = txtBloodType.Text;
             person.CivilStatusId = txtCivilStatus.Text;
@@ -162,7 +182,7 @@ namespace INTEC.Project2
             dtpDOB.Value = DateTime.Now.AddYears(-18);
             rblMale.Checked = true;
 
-            txtNationality.Text = string.Empty;
+            cbNationality.SelectedIndex = 0;
             txtAddress.Text = string.Empty;
             txtBloodType.Text = string.Empty;
             txtOccupation.Text = string.Empty;
@@ -198,6 +218,26 @@ namespace INTEC.Project2
         {
             defaultView();
             loadData();
+        }
+
+        public void New()
+        {
+            MessageBox.Show("METODO NO IMPLEMENTADO");
+        }
+
+        public void Save()
+        {
+            MessageBox.Show("METODO NO IMPLEMENTADO");
+        }
+
+        public void Cancel()
+        {
+            MessageBox.Show("METODO NO IMPLEMENTADO");
+        }
+
+        public void Delete()
+        {
+            MessageBox.Show("METODO NO IMPLEMENTADO");
         }
     }
 }

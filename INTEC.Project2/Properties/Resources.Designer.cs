@@ -63,6 +63,16 @@ namespace INTEC.Project2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close16x16 {
+            get {
+                object obj = ResourceManager.GetObject("close16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gestioinciudadano {
             get {
                 object obj = ResourceManager.GetObject("gestioinciudadano", resourceCulture);
@@ -86,6 +96,16 @@ namespace INTEC.Project2.Properties {
         internal static System.Drawing.Bitmap searchIcon {
             get {
                 object obj = ResourceManager.GetObject("searchIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash16x16 {
+            get {
+                object obj = ResourceManager.GetObject("trash16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

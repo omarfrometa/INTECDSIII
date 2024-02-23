@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace INTEC.Project2
 {
-    public partial class UsersForm : Form
+    public partial class UsersForm : Form, MyInterface
     {
         private const string filePath = "users.json";
         private List<UserEntity> users;
@@ -29,10 +29,7 @@ namespace INTEC.Project2
 
         private void defaultView()
         {
-            btnNew.Enabled = true;
             gbForm.Enabled = false;
-            btnSave.Enabled = false;
-            btnCancel.Enabled = false;
         }
 
         private void loadData()
@@ -53,24 +50,15 @@ namespace INTEC.Project2
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            btnNew.Enabled = false;
-            gbForm.Enabled = true;
-            btnSave.Enabled = true;
-            btnCancel.Enabled = true;
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (IsFormValid())
-            {
-                addNew();
-                defaultView();
-                loadData();
-                clearForm();
-            }
+            
         }
 
-        void addNew()
+        void saveRecord()
         {
             var obj = new UserEntity();
             obj.Id = Guid.NewGuid().ToString();
@@ -161,10 +149,51 @@ namespace INTEC.Project2
                     rblYes.Checked = user.Authorized;
 
                     gbForm.Enabled = true;
-                    btnNew.Enabled = false;
-                    btnSave.Enabled = true;
-                    btnCancel.Enabled = true;
-                    btnRemove.Enabled = true;
+                }
+            }
+        }
+
+        public void New()
+        {
+            gbForm.Enabled = true;
+        }
+
+        public void Save()
+        {
+            if (IsFormValid())
+            {
+                saveRecord();
+                defaultView();
+                loadData();
+                clearForm();
+            }
+        }
+
+        public void Cancel()
+        {
+            MessageBox.Show("METODO NO IMPLEMENTADO");
+        }
+
+        public void Delete()
+        {
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                users = JsonConvert.DeserializeObject<List<UserEntity>>(json);
+
+                var user = users.FirstOrDefault(x=> x.Id == RecordId);
+                if (user != null)
+                { 
+                    users.Remove(user);
+
+                    json = JsonConvert.SerializeObject(users);
+                    File.WriteAllText(filePath, json);
+
+                    MessageBox.Show("Usuario Eliminado con exito!");
+
+                    loadData();
+                    gbForm.Enabled = false;
+                    clearForm();
                 }
             }
         }
