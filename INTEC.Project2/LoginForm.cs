@@ -59,6 +59,12 @@ namespace INTEC.Project2
                     return;
                 }
 
+                if (!user.Authorized)
+                {
+                    MessageBox.Show($"El Usuario ({user.FullName}) no Authorizado.", "CONTROL DE USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 //MessageBox.Show("Credenciales Validas.", "CONTROL DE USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 mainFormIntance.EnabledControlMainForm();

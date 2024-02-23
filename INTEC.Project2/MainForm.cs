@@ -124,5 +124,11 @@ namespace INTEC.Project2
                 ((MyInterface)form).Delete();
             }
         }
+
+        private void changeUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LoginForm(this) { MdiParent = this };
+            form.Show();
+        }
     }
 }
