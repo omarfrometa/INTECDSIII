@@ -1,0 +1,33 @@
+﻿@using DSIII.WebAPI.Entities
+@model List<User>
+
+    <h1>Listado de Usuarios (@Model.Count)</h1>
+    <a href="/CRUD/Create">Nuevo Usuario</a>
+    <br/>
+
+    <table class="table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Correo Electronico</th>
+                <th>Nombre Completo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.OrderByDescending(x=> x.CreatedDate))
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Username</td>
+                    <td>@user.Email</td>
+                    <td>@user.DisplayName</td>
+                    <td>
+                        <button class="btn btn-sm btn-info">Editar</button>
+                        <button class="btn btn-sm btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,45 @@
+﻿@using DSIII.WebAPI.Entities
+@model User
+@{
+}
+
+<h1>Nuevo Usuario</h1>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{ 
+    <h3 class="text-danger">@ViewBag.Error</h3>
+}
+
+<form action="Create" method="post">
+    <fieldset>
+        <legend>Info</legend>
+        <table>
+            <tr>
+                <td>Usuario</td>
+                <td><input asp-for="Username" /></td>
+            </tr>
+            <tr>
+                <td>Clave</td>
+                <td><input asp-for="Password" type="password" /></td>
+            </tr>
+            <tr>
+                <td>Clave Confirmar</td>
+                <td><input id="PasswordConfirm" name="PasswordConfirm" type="password" /></td>
+            </tr>
+            <tr>
+                <td>Nombre Completo</td>
+                <td><input asp-for="DisplayName" /></td>
+            </tr>
+            <tr>
+                <td>Correo Electronico</td>
+                <td><input asp-for="Email" type="email" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-success" type="submit">CREAR NUEVO USUARIO</button> | <button class="btn btn-light" type="reset">Cancelar</button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+

@@ -25,6 +25,14 @@ namespace DSIII.WebAPI.Controllers
             return users;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(string id)
+        {
+            var user = await _context.User.FirstOrDefaultAsync(x => x.Id == id);
+            
+            return user ?? new Entities.User();
+        }
+
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(UserModel model) {
             var user = new User { 
